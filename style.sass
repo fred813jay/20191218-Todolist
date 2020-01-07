@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900')
+
+$colorBlue: #4A90E2
+$colorDarkBlue: #00408B
+$colorRed: #D0021B
+$colorYellow: #F5A623
+$colorGreyLight: #f2f2f2
+$colorGreyMid: #c8c8c8
+$colorGreyDark: #757575
+
+*
+    // border: 1px solid #000 !important
+
+html,body
+    font-family: 'Roboto' , sans-serif
+    // display: flex
+    // justify-content: center
+    width: 100%
+    background-color: #e1e1e1
+
+
+#app
+    width: 100%
+    display: flex
+    justify-content: center
+
+.list
+    width: 100%
+    max-width: 620px
+.fa-search-plus
+    font-size: 36px
+    transform: translateY(10px)
+    margin-right: 18px
+    cursor: pointer
+    color: $colorGreyDark
+    &:hover
+        color: black
+.btn-add-task
+    width: 84%
+    padding: 10px 20px
+    margin-top: 20px
+    margin-bottom: 20px
+    background-color: #fff
+    text-align: left
+    align-items: top
+    color: #757575
+    // display: flex
+    // align-items: center
+    // cursor: pointer
+    &:before
+        content: "+"
+        font-size: 40px
+.list-item    
+    width: 100%
+    margin-bottom: 8px
+    &.isStarred
+        .panel-top,.panel-bottom 
+            background-color: #FFF2DC
+    .main
+        display: flex
+        align-items: center
+        justify-content: space-between
+        .title
+            font-size: 24px
+            background-color: transparent
+            outline: none
+            border: none
+        i
+            font-size: 24px
+            margin-right: 32px
+            cursor: pointer
+            transition: 0.5s
+            &.open
+                color: $colorBlue
+            &.isStarred
+                color: $colorYellow    
+            &:last-child
+                margin-right: 0px   
+    .second
+        margin-top: 15px
+        color: $colorGreyDark    
+        i
+            margin-right: 16px
+        .date
+            margin-right: 16px
+
+    .panel-top,.panel-bottom    
+        padding: 24px 32px    
+        background-color: #f2f2f2
+        .el-checkbox
+            margin-left: -16px
+            transform: scale(1.7) translateX(-5px)
+            transform-origin: right center
+    .panel-top
+        padding-left: 65px
+    .panel-bottom
+        border-top: 1px solid $colorGreyMid 
+        padding-left: 85px
+        h3       
+            margin-top: 24px
+            margin-bottom: 8px
+            label
+                cursor: pointer
+            &:first-child
+                margin-top: 0px
+            i
+                margin-right: 8px
+                margin-left: -20px  
+        .btns
+            margin-left: -85px
+            margin-right: -32px
+            margin-bottom: -24px    
+            margin-top: 24px  
+            display: flex        
+            .btn
+                padding: 16px
+                // border: 1px solid
+                flex: 1
+                text-align: center
+                font-size: 24px
+                font-weight: 300
+                cursor: pointer
+                transition: 0.5s
+                i
+                    margin-right: 14px
+                &.cancel
+                    background-color: #fff
+                    color: $colorRed
+                    &:hover
+                        background-color: $colorRed
+                        color: #fff
+                &.task
+                    background-color: $colorBlue    
+                    color: white
+                    &:hover
+                        background-color: darken($colorBlue,10)
+.noshow
+    width: 0
+    height: 0                       

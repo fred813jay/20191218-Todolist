@@ -1,0 +1,57 @@
+#app
+    ul.list
+        i.fas.fa-search-plus(@click="addNewItem")
+        span
+            input.btn-add-task(id="tasktitle",placeholder="Add Task (Please Enter A Title)")
+        list-item(v-for="(item,key) in orderedItems",
+                  :item="item",
+                  :newitem="newitem",
+                  :key="key",
+                 )
+
+template#list-item
+    li.list-item(:class="{isStarred : item.star}")
+        .panel-top
+            .main
+                div
+                    el-checkbox.checkbox(v-model="item.complete")
+                    input.title(v-model="item.title",
+                                :style="{'text-decoration':item.complete?'line-through':''}")
+                div
+                    i.fa-star(@click="item.star=!item.star",
+                                  :class="{isStarred : item.star ,far:!item.star, fas:item.star}")
+                    i.fa.fa-pencil-alt(@click="copyitem(item)",
+                                        :class="{open : open}")
+            .second
+                i.fas.fa-calendar-alt(v-if="item.date")
+                span.date {{item.date}}
+                i.fas.fa-image
+                i.fas.fa-comment-dots
+        .panel-bottom(v-if="open")
+            .controls
+                h3 
+                    i.far.fa-calendar-alt
+                    span DeadLine
+                el-date-picker(v-model="item.date",
+                               value-format="yyyy/MM/dd")
+                h3 
+                    label
+                        i.far.fa-image
+                        span Picture
+                            input.noshow(type="file",@change="onFileChange()")
+                    br
+                    image(v-if="item.image",:src="item.image",width="400",height="300")
+                h3 
+                    i.far.fa-comment-dots
+                    span Comment
+                el-input.comment(v-model="item.comment",
+                               rows=5,
+                               type="text",
+                               placeholder="Type your memo here…")
+            .btns
+                .btn.cancel(@click="Cancel(item)")
+                    i.fa.fa-times
+                    span Cancel
+                .btn.task(@click="Save(item)")
+                    i.fa.fa-plus
+                    span Save
